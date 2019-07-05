@@ -3,7 +3,6 @@
 # Acumos Apache-2.0
 # ===================================================================================
 # Copyright (C) 2019 AT&T Intellectual Property. All rights reserved.
-# Modifications Copyright (C) 2019 Nordix Foundation.
 # ===================================================================================
 # This Acumos software file is distributed by AT&T
 # under the Apache License, Version 2.0 (the "License");
@@ -151,9 +150,7 @@ def listener(environ, start_response):
         log("image={}, resource={}, version={}".format(image, resource, version))
         log("Splitting image reference: {0}".format(image))
         # Split the solutionId e.g.square_5968f2ae-e0d6-46e6-81c1-dc19db3c4965
-        lastIndexOfUnderscore =image.rindex('_');
-        name = image[0:lastIndexOfUnderscore]
-        solutionId = image[lastIndexOfUnderscore+1:len(image)]
+        name, solutionId = image.split('_')
         log("name={}, solutionId={}".format(name, solutionId))
 
     log("Splitting AUTHORIZATION header")
